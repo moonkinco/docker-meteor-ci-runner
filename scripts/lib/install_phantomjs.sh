@@ -2,11 +2,11 @@
 set -e
 
 PHANTOMJS_VERSION=1.9.8
-PHANTOMJS_ID=phantomjs-${PHANTOMJS_VERSION}-linux-x86_64
-PHANTOMJS_TAR_FILE=${PHANTOMJS_ID}.tar.bz2
 
-apt-get -y install libfreetype6 libfreetype6-dev fontconfig
-
-curl -L https://bitbucket.org/ariya/phantomjs/downloads/${PHANTOMJS_TAR_FILE} -o /tmp/${PHANTOMJS_TAR_FILE}
-tar -xjf /tmp/${PHANTOMJS_TAR_FILE} -C /tmp/
-mv /tmp/${PHANTOMJS_ID}/bin/phantomjs /usr/local/bin/phantomjs
+apt-get install -y wget libfreetype6 libfontconfig bzip2
+mkdir -p /srv/var
+wget -q --no-check-certificate -O /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
+tar -xjf /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C /tmp
+rm -f /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
+mv /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/ /srv/var/phantomjs
+ln -s /srv/var/phantomjs/bin/phantomjs /usr/bin/phantomjs
