@@ -1,17 +1,16 @@
 #!/bin/bash
 set -e
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
-nvm install $NODE_VERSION
 # NODE_ARCH=x64
 #
 # # check we need to do this or not
 #
 # NODE_DIST=node-v${NODE_VERSION}-linux-${NODE_ARCH}
 #
-# cd /tmp
-# curl -O -L http://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
-# tar xvzf ${NODE_DIST}.tar.gz
+cd /tmp
+curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz"
+tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1
+rm "node-v$NODE_VERSION-linux-x64.tar.xz"
 # rm -rf /opt/nodejs
 # mv ${NODE_DIST} /opt/nodejs
 #
