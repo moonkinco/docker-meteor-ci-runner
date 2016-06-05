@@ -1,4 +1,4 @@
-FROM node:5-onbuild
+FROM node:5
 MAINTAINER Moonkin
 
 ENV SCRIPTS_DIR /opt/mk-scripts
