@@ -1,15 +1,12 @@
 # Install PhantomJS
 set -e
-apt-get -y install libfreetype6 libfreetype6-dev fontconfig
 ARCH=`uname -m`
 PHANTOMJS_VERSION=1.9.8
-PHANTOMJS_TAR_FILE=phantomjs-${PHANTOMJS_VERSION}-linux-${ARCH}.tar.bz2
+PHANTOMJS_ID phantomjs-${PHANTOMJS_VERSION}-${ARCH}-x86_64
+PHANTOMJS_TAR_FILE=${PHANTOMJS_ID}.tar.bz2
 
-cd /usr/local/share/
-curl -L -O https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-${ARCH}.tar.bz2
-tar xjf $PHANTOMJS_TAR_FILE
-ln -s -f /usr/local/share/phantomjs-${PHANTOMJS_VERSION}-linux-${ARCH}/bin/phantomjs /usr/local/share/phantomjs
-ln -s -f /usr/local/share/phantomjs-${PHANTOMJS_VERSION}-linux-${ARCH}/bin/phantomjs /usr/local/bin/phantomjs
-ln -s -f /usr/local/share/phantomjs-${PHANTOMJS_VERSION}-linux-${ARCH}/bin/phantomjs /usr/bin/phantomjs
+apt-get -y install libfreetype6 libfreetype6-dev fontconfig
 
-rm $PHANTOMJS_TAR_FILE
+curl -L https://bitbucket.org/ariya/phantomjs/downloads/${PHANTOMJS_TAR_FILE} -o /tmp/${PHANTOMJS_TAR_FILE}
+tar -xjf /tmp/${PHANTOMJS_TAR_FILE} -C /tmp/
+mv /tmp/${PHANTOMJS_ID}/bin/phantomjs /usr/local/bin/phantomjs
