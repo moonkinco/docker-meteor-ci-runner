@@ -7,3 +7,4 @@ COPY scripts $SCRIPTS_DIR
 RUN bash $SCRIPTS_DIR/init.sh
 
 ONBUILD RUN bash $SCRIPTS/lib/install_meteor.sh
+ONBUILD RUN bash $SCRIPTS/lib/install_mup.sh
