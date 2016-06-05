@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM node:5-onbuild
 MAINTAINER Moonkin
 
 ENV SCRIPTS_DIR /opt/mk-scripts
